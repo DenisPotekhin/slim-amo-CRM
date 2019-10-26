@@ -106,13 +106,20 @@ try
  */
 $Response = json_decode($out, true);
 $data = $Response['_embedded']['items'];
-$str = '';
+$strWithTask = '';
+$strWithoutTask = '';
 $i = 1;
+$j = 1;
 foreach ($data as $value) {
-$str = $str . 'Сделка №' . $i . ' - ' . $value['name'] . ' Ближайшая задача' . $value['closest_task_at'] . "<br />";
-$i += 1;
+	if ($value['closest_task_at'] == 0) {
+		$strWithoutTask = $strWithoutTask . 'Сделка №' . $i . ' - ' . $value['name'] . ' Задач нет' . "<br />";
+		$i += 1;
+	} else {
+		$strWithTask = $strWithTask . 'Сделка №' . $j . ' - ' . $value['name'] . ' Ближайшая задача - ' . date('c',$value['closest_task_at']) . "<br />";
+		$j +=1;
+	}
 }
-$response->getBody()->write($str);
+	$response->getBody()->write('Сделки без задач' . "<br />" . $strWithoutTask . "<br />" . 'Сделки с задачами' . "<br />" . $strWithTask);
 		return $response;
 	});
 
