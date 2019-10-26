@@ -170,8 +170,9 @@ try
     }
 
 } catch (Exception $E) {
-    die('Ошибка: ' . $E->getMessage() . PHP_EOL . 'Код ошибки: ' . $E->getCode());
-}
+    	die('Ошибка: ' . $E->getMessage() . PHP_EOL . 'Код ошибки: ' . $E->getCode());
+	}
+	}
 }
 
 	$response->getBody()->write('Сделки без задач' . "<br />" . $strWithoutTask . "<br />" . 'Сделки с задачами' . "<br />" . $strWithTask);
