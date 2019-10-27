@@ -2,7 +2,7 @@
 Test task for amo-CRM
 
 
-install cURL
+install slim + cURL
 
 
 make start
