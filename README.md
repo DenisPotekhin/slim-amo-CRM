@@ -2,7 +2,7 @@
 Test task for amo-CRM
 
 
-install slim + cURL
+install cURL
 
 
-make start
+php -S localhost:8080 -t public public/index.php
